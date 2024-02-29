@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MusicController : MonoBehaviour
 {
-    public AudioSource musicSource;
-    public GameObject musicStopped;
+    [SerializeField]
+    AudioSource musicSource;
+
+    [SerializeField]
+    Button musicButton;
+
+    [SerializeField]
+    Sprite[] musicSprites;
 
     private bool isMusicPlaying = true;
 
@@ -22,14 +29,14 @@ public class MusicController : MonoBehaviour
             musicSource.Pause();
             isMusicPlaying = false;
             // Change button sprite to musicOffSprite
-            musicStopped.SetActive(true);
+            musicButton.GetComponent<Image>().sprite = musicSprites[1];
         }
         else
         {
             musicSource.UnPause();
             isMusicPlaying = true;
             // Change button sprite to musicOnSprite
-            musicStopped.SetActive(false);
+            musicButton.GetComponent<Image>().sprite = musicSprites[0];
         }
     }
 }
