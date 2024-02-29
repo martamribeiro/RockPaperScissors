@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class UIController : MonoBehaviour
 {
@@ -9,7 +12,9 @@ public class UIController : MonoBehaviour
     //Quit
     public void Quit()
     {
+#if UNITY_EDITOR
         EditorApplication.isPlaying = false; //to close in the unity editor
+#endif
         Application.Quit();
     }
 
