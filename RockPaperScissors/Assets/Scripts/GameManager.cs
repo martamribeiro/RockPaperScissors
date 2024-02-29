@@ -13,14 +13,14 @@ public class GameManager : MonoBehaviour
     public void StartOnePlayerGame()
     {
         //changes in one player game
-        player2.text = "Player 2";
+        player2.text = "Computer";
         StartGame();
     }
 
     public void StartTwoPlayersGame()
     {
         //changes in two players game
-        player2.text = "Computer";
+        player2.text = "Player 2";
         StartGame();
     }
 
