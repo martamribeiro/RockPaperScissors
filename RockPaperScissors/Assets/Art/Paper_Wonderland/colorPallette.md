@@ -1,15 +1,6 @@
 # Paper Wonderland theme/color guide
 Down below you can find the different colors used in each of the themes available in the game
 
-# Latte Evening
-- (Hex):#FFFFFF 
-- (Hex):#AA725E 
-- (Hex):#724C40 
-- (Hex):#E8D2C5 
-- (Hex):#F4EBDF
-- (Hex):#FCE5D9 
-![Latte Evening Color Palette](Latte_Evening.png)
-
 # Mocca Morning
 - (Hex):#FFFFFF 
 - (Hex):#A3C4BC 
@@ -18,3 +9,21 @@ Down below you can find the different colors used in each of the themes availabl
 - (Hex):#345B4C 
 - (Hex):#1E352A 
 ![Mocca Morning Color Palette](Mocca_Morning.png)
+
+# Lavender Night
+- (Hex):#FFFFFF 
+- (Hex):#D5C5DC 
+- (Hex):#BAA4C7 
+- (Hex):#8C6B9D
+- (Hex):#6A497A
+- (Hex):#432C52 
+![Latte Evening Color Palette](Lavender_Night.png)
+
+# Latte Evening
+- (Hex):#FFFFFF 
+- (Hex):#AA725E 
+- (Hex):#724C40 
+- (Hex):#E8D2C5 
+- (Hex):#F4EBDF
+- (Hex):#FCE5D9 
+![Latte Evening Color Palette](Latte_Evening.png)
