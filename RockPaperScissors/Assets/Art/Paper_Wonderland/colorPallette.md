@@ -10,14 +10,14 @@ Down below you can find the different colors used in each of the themes availabl
 - (Hex):#1E352A 
 ![Mocca Morning Color Palette](Mocca_Morning.png)
 
-# Lavender Night
+# Blueberry Afternoon
 - (Hex):#FFFFFF 
-- (Hex):#D5C5DC 
-- (Hex):#BAA4C7 
-- (Hex):#8C6B9D
-- (Hex):#6A497A
-- (Hex):#432C52 
-![Latte Evening Color Palette](Lavender_Night.png)
+- (Hex):#A8C0D9
+- (Hex):#7BA1C8 
+- (Hex):#547BA9 
+- (Hex):#365B8C
+- (Hex):#1D406B 
+![Mocca Morning Color Palette](Blueberry_Afternoon.png)
 
 # Latte Evening
 - (Hex):#FFFFFF 
@@ -27,3 +27,12 @@ Down below you can find the different colors used in each of the themes availabl
 - (Hex):#F4EBDF
 - (Hex):#FCE5D9 
 ![Latte Evening Color Palette](Latte_Evening.png)
+
+# Lavender Night
+- (Hex):#FFFFFF 
+- (Hex):#D5C5DC 
+- (Hex):#BAA4C7 
+- (Hex):#8C6B9D
+- (Hex):#6A497A
+- (Hex):#432C52 
+![Latte Evening Color Palette](Lavender_Night.png)
