@@ -714,6 +714,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 506979972}
     m_Modifications:
+    - target: {fileID: 1377598712377019121, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 43cd75cd93f4c364c83e607a7c6e086c, type: 3}
     - target: {fileID: 2339301747245039956, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
       propertyPath: m_Name
       value: MultiPlayerButton
@@ -1099,7 +1103,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 82c49de1e106549428b148e8ebd7debb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e95296e46208f6d4b9e7c17fcf6fd4d5, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1407,7 +1411,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 643c5683b66d23a4ab043b104772e1dc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2f0c72004c95ab44b3bd86b4b99c010, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1751,6 +1755,10 @@ PrefabInstance:
       propertyPath: m_text
       value: SinglePlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 1377598712377019121, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 43cd75cd93f4c364c83e607a7c6e086c, type: 3}
     - target: {fileID: 2339301747245039956, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
       propertyPath: m_Name
       value: SinglePlayerButton
@@ -1916,6 +1924,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 25.771973
       objectReference: {fileID: 0}
+    - target: {fileID: 2813953080272006007, guid: e05550d38c8ba654e8cb3dfa731baefc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 738baf748a193694085a99eeb4469177, type: 3}
     - target: {fileID: 2813953080354127060, guid: e05550d38c8ba654e8cb3dfa731baefc, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2016,6 +2028,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExitButtonBG
       objectReference: {fileID: 0}
+    - target: {fileID: 2813953080354127063, guid: e05550d38c8ba654e8cb3dfa731baefc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1ba48b58dea9cf948a784abf316c2b68, type: 3}
     - target: {fileID: 5512482481000293292, guid: e05550d38c8ba654e8cb3dfa731baefc, type: 3}
       propertyPath: _scaleAmount
       value: 0.2
@@ -2111,7 +2127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3323348098557274465, guid: bbcada58b1daa604694d2cf6726000e7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.00012207031
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3323348098557274465, guid: bbcada58b1daa604694d2cf6726000e7, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2145,6 +2161,10 @@ PrefabInstance:
       propertyPath: m_AspectRatio
       value: 1.7772158
       objectReference: {fileID: 0}
+    - target: {fileID: 3323348098557274495, guid: bbcada58b1daa604694d2cf6726000e7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0ace923daf9dc624097acfd8e524b5dd, type: 3}
     - target: {fileID: 3323348098557274495, guid: bbcada58b1daa604694d2cf6726000e7, type: 3}
       propertyPath: m_PreserveAspect
       value: 1
