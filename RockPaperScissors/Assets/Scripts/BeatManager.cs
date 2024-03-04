@@ -37,7 +37,7 @@ public class Intervals
         if (Mathf.FloorToInt(interval) != _lastInterval)
         {
             _lastInterval = Mathf.FloorToInt(interval);
-            _trigger.Invoke();
+            _trigger?.Invoke();
         }
     }
 }

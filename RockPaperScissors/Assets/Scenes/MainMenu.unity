@@ -159,8 +159,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 263632868}
-  - component: {fileID: 263632867}
   - component: {fileID: 263632869}
+  - component: {fileID: 263632867}
   - component: {fileID: 263632870}
   m_Layer: 0
   m_Name: MusicManager
@@ -314,9 +314,9 @@ MonoBehaviour:
     _trigger:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 188027443}
-          m_TargetAssemblyTypeName: UIBackground, Assembly-CSharp
-          m_MethodName: Pulse
+        - m_Target: {fileID: 263632867}
+          m_TargetAssemblyTypeName: MusicController, Assembly-CSharp
+          m_MethodName: OnBeatInvoke
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -457,7 +457,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &506979971
 GameObject:
@@ -586,7 +586,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &844918295
 MonoBehaviour:
@@ -629,7 +629,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &961397655
 GameObject:
@@ -717,6 +717,34 @@ PrefabInstance:
     - target: {fileID: 2339301747245039956, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
       propertyPath: m_Name
       value: MultiPlayerButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728982793522227677, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728982793522227677, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728982793522227677, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1960536488}
+    - target: {fileID: 2728982793522227677, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728982793522227677, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeToMultiPlayerGameScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728982793522227677, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728982793522227677, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2974637338384533843, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
       propertyPath: m_Pivot.x
@@ -923,7 +951,7 @@ RectTransform:
   - {fileID: 267269632}
   - {fileID: 1532304799}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1011,7 +1039,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1562981664
 GameObject:
@@ -1402,6 +1430,57 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4265539905647991097, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
   m_PrefabInstance: {fileID: 1067715944}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1946463842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1946463844}
+  - component: {fileID: 1946463843}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1946463843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946463842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294200dd56628ac49a5e25e008553d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gestures: []
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  player1Points: {fileID: 0}
+  player2Points: {fileID: 0}
+  player1Gesture: {fileID: 0}
+  player2Gesture: {fileID: 0}
+--- !u!4 &1946463844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946463842}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1960536486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,6 +1490,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1960536487}
+  - component: {fileID: 1960536488}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -1431,8 +1511,20 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1960536488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960536486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db5d2644ec346c643a5aa1669bf504dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1964375216 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3323348098557274465, guid: bbcada58b1daa604694d2cf6726000e7, type: 3}
@@ -1646,7 +1738,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1731939549692045632
 PrefabInstance:
@@ -1662,6 +1754,34 @@ PrefabInstance:
     - target: {fileID: 2339301747245039956, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
       propertyPath: m_Name
       value: SinglePlayerButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728982793522227677, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728982793522227677, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728982793522227677, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1960536488}
+    - target: {fileID: 2728982793522227677, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728982793522227677, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeToSinglePlayerGameScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728982793522227677, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728982793522227677, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3765834199069878587, guid: 20591d46a1a587d47ad3dff3cfe607cd, type: 3}
       propertyPath: m_Name

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
+
     public Sprite[] gestures; //order: rock, paper, scissors
 
     public TMP_Text player1, player2, player1Points, player2Points;
@@ -17,10 +19,22 @@ public class GameManager : MonoBehaviour
     bool player2Chosen = false;
     bool winnerDetermined = false;
 
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(this);
+    }
+
     void Start()
     {
-        SetAlpha(player1Gesture, 0);
-        SetAlpha(player2Gesture, 0);
+        //SetAlpha(player1Gesture, 0);
+        //SetAlpha(player2Gesture, 0);
     }
 
     void SetAlpha(GameObject emptySprite, float alpha)
@@ -31,16 +45,16 @@ public class GameManager : MonoBehaviour
         image.color = color;
     }
 
-    public void StartOnePlayerGame()
+    public void StartSinglePlayerGame()
     {
         isOnePlayerMode = true;
-        StartGame();
+        //StartGame();
     }
 
-    public void StartTwoPlayersGame()
+    public void StartMultiPlayerGame()
     {
         isOnePlayerMode = false;
-        StartGame();
+        //StartGame();
     }
 
     public void StartGame()

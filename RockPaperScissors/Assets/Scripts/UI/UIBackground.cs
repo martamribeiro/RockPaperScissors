@@ -11,6 +11,16 @@ public class UIBackground : MonoBehaviour
         _pulseCount = 0;
     }
 
+    private void Start()
+    {
+        MusicController.Instance.OnBeat += Pulse;
+    }
+
+    private void OnDisable()
+    {
+        MusicController.Instance.OnBeat -= Pulse;
+    }
+
     public void Pulse()
     {
         switch (_pulseCount)

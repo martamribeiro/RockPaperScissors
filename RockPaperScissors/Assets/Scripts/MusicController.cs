@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,10 @@ using UnityEngine.UI;
 
 public class MusicController : MonoBehaviour
 {
+    public static MusicController Instance { get; private set; }
+
+    public Action OnBeat;
+
     [SerializeField]
     AudioSource musicSource;
 
@@ -16,10 +21,23 @@ public class MusicController : MonoBehaviour
 
     private bool isMusicPlaying = true;
 
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+            
+        Instance = this;
+    }
+
     private void Start()
     {
         // Ensure music is initially playing
         musicSource.Play();
+
+        DontDestroyOnLoad(gameObject);
     }
 
     public void ToggleMusic()
@@ -38,5 +56,10 @@ public class MusicController : MonoBehaviour
             // Change button sprite to musicOnSprite
             musicButton.GetComponent<Image>().sprite = musicSprites[0];
         }
+    }
+
+    public void OnBeatInvoke()
+    {
+        OnBeat?.Invoke();
     }
 }
