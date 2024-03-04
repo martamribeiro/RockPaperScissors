@@ -10,14 +10,17 @@ public class GameManager : MonoBehaviour
 
     public Sprite[] gestures; //order: rock, paper, scissors
 
-    public TMP_Text player1, player2, player1Points, player2Points;
-
     public GameObject player1Gesture, player2Gesture;
 
     bool isOnePlayerMode = false;
     bool player1Chosen = false;
     bool player2Chosen = false;
     bool winnerDetermined = false;
+
+    private UIGameHandler _gameUIHandler;
+
+    private int _player1Score = 0;
+    private int _player2Score = 0;
 
     private void Awake()
     {
@@ -33,63 +36,14 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        _gameUIHandler = UIGameHandler.Instance;
+
         //SetAlpha(player1Gesture, 0);
         //SetAlpha(player2Gesture, 0);
     }
-
-    void SetAlpha(GameObject emptySprite, float alpha)
-    {
-        var image = emptySprite.GetComponent<Image>();
-        var color = image.color;
-        color.a = alpha;
-        image.color = color;
-    }
-
-    public void StartSinglePlayerGame()
-    {
-        isOnePlayerMode = true;
-        //StartGame();
-    }
-
-    public void StartMultiPlayerGame()
-    {
-        isOnePlayerMode = false;
-        //StartGame();
-    }
-
-    public void StartGame()
-    {
-        SetAlpha(player1Gesture, 0);
-        SetAlpha(player2Gesture, 0);
-        player1Points.text = "0";
-        player2Points.text = "0";
-        player1Chosen = false;
-        player2Chosen = false;
-        if (!isOnePlayerMode)
-        {
-            player1.text = "Player 1";
-            player2.text = "Player 2";
-        }
-        else
-        {
-            player1.text = "Player 1";
-            player2.text = "Computer";
-        }
-    }
-
-    IEnumerator StartNewRound()
-    {
-        yield return new WaitForSeconds(2f); // Adjust the delay time as needed
-        SetAlpha(player1Gesture, 0);
-        SetAlpha(player2Gesture, 0);
-        player1Chosen = false;
-        player2Chosen = false;
-        winnerDetermined = false;
-    }
-
     void Update()
     {
-        if (player1Chosen && player2Chosen && winnerDetermined == false)
+        if (player1Chosen && player2Chosen && !winnerDetermined)
         {
             DetermineWinner();
             StartCoroutine(StartNewRound());
@@ -107,9 +61,71 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void SetAlpha(GameObject emptySprite, float alpha)
+    {
+        var image = emptySprite.GetComponent<Image>();
+        var color = image.color;
+        color.a = alpha;
+        image.color = color;
+    }
+
+    public void StartSinglePlayerGame()
+    {
+        isOnePlayerMode = true;
+    }
+
+    public void StartMultiPlayerGame()
+    {
+        isOnePlayerMode = false;
+    }
+
+    public void StartGame()
+    {
+        _gameUIHandler = UIGameHandler.Instance;
+        //SetAlpha(player1Gesture, 0);
+        //SetAlpha(player2Gesture, 0);
+
+        // Set the player Scores
+        _gameUIHandler.UpdatePlayerOneScore(0);
+        _gameUIHandler.UpdatePlayerTwoScore(0);
+
+        player1Chosen = false;
+        player2Chosen = false;
+
+        // Set the player Names
+        _gameUIHandler.ChangePlayerOneName("Player 1");
+
+        string player2Name;
+
+        if (!isOnePlayerMode)
+        {
+            player2Name = "Player 2";
+            _gameUIHandler.HandlePlayer2InputGuide(false);
+        }
+        else
+        {
+            player2Name = "Computer";
+            _gameUIHandler.HandlePlayer2InputGuide(true);
+        }
+
+        _gameUIHandler.ChangePlayerTwoName(player2Name);
+    }
+
+    IEnumerator StartNewRound()
+    {
+        yield return new WaitForSeconds(2f); // Adjust the delay time as needed
+
+        SetAlpha(player1Gesture, 0);
+        SetAlpha(player2Gesture, 0);
+
+        player1Chosen = false;
+        player2Chosen = false;
+        winnerDetermined = false;
+    }
+
     void HandleTwoPlayerInput()
     {
-        if (Input.GetKeyDown(KeyCode.A)&&player1Chosen==false)
+        if (Input.GetKeyDown(KeyCode.A) && player1Chosen==false)
         {
             ChooseGesture(player1Gesture, gestures[0]);
             player1Chosen = true;
@@ -192,20 +208,14 @@ public class GameManager : MonoBehaviour
                  (player1Sprite == gestures[2] && player2Sprite == gestures[1]))
         {
             //player 1 wins
-            UpdatePoints(player1Points);
+            _gameUIHandler.UpdatePlayerOneScore(_player1Score++);
         }
         else
         {
             //player 2 wins
-            UpdatePoints(player2Points);
+            _gameUIHandler.UpdatePlayerTwoScore(_player2Score++);
         }
-        winnerDetermined = true;
-    }
 
-    void UpdatePoints(TMP_Text playerPoints)
-    {
-        int points = int.Parse(playerPoints.text);
-        points++;
-        playerPoints.text = points.ToString();
+        winnerDetermined = true;
     }
 }

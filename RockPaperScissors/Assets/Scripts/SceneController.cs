@@ -28,19 +28,19 @@ public class SceneController : MonoBehaviour
 
     public static void ChangeToGameScene()
     {
-        SceneManager.LoadScene("GameScene 1");
+        SceneManager.LoadScene("GameScene");
     }
 
     public static void ChangeToSinglePlayerGameScene()
     {
-        GameManager.Instance.StartSinglePlayerGame();
         ChangeToGameScene();
+        GameManager.Instance.StartSinglePlayerGame();
     }
 
     public static void ChangeToMultiPlayerGameScene()
     {
-        GameManager.Instance.StartMultiPlayerGame();
         ChangeToGameScene();
+        GameManager.Instance.StartMultiPlayerGame();
     }
 
     public static void GoBackToMainMenu()
