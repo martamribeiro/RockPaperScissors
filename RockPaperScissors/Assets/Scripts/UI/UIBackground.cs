@@ -13,12 +13,23 @@ public class UIBackground : MonoBehaviour
 
     private void Start()
     {
-        MusicController.Instance.OnBeat += Pulse;
+        if (gameObject.activeSelf)
+            MusicController.Instance.OnBeat += Pulse;
+    }
+
+    private void OnEnable()
+    {
+        if (MusicController.Instance != null)
+        {
+            MusicController.Instance.OnBeat += Pulse;
+            _pulseCount = 0;
+        }
     }
 
     private void OnDisable()
     {
         MusicController.Instance.OnBeat -= Pulse;
+        _pulseCount = 0;
     }
 
     public void Pulse()
