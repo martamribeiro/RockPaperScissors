@@ -3,19 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class GameManager : MonoBehaviour
 {
+    public Action<Hand.Gesture> OnPlayerOneInput;
+    public Action<Hand.Gesture> OnPlayerTwoInput;
+
     public static GameManager Instance { get; private set; }
 
-    public Sprite[] gestures; //order: rock, paper, scissors
-
-    public GameObject player1Gesture, player2Gesture;
-
     bool isOnePlayerMode = false;
+
     bool player1Chosen = false;
+    bool player1Revealed = false;
+    Hand.Gesture player1Gesture = Hand.Gesture.None;
+
     bool player2Chosen = false;
-    bool winnerDetermined = false;
+    bool player2Revealed = false;
+    Hand.Gesture player2Gesture = Hand.Gesture.None;
 
     private UIGameHandler _gameUIHandler;
 
@@ -37,36 +42,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _gameUIHandler = UIGameHandler.Instance;
-
-        //SetAlpha(player1Gesture, 0);
-        //SetAlpha(player2Gesture, 0);
     }
+
     void Update()
     {
-        if (player1Chosen && player2Chosen && !winnerDetermined)
-        {
-            DetermineWinner();
-            StartCoroutine(StartNewRound());
-        }
-
-        if (!isOnePlayerMode)
-        {
-            // Two-player mode
-            HandleTwoPlayerInput();
-        }
-        else
-        {
-            // One-player mode
-            HandleOnePlayerInput();
-        }
-    }
-
-    void SetAlpha(GameObject emptySprite, float alpha)
-    {
-        var image = emptySprite.GetComponent<Image>();
-        var color = image.color;
-        color.a = alpha;
-        image.color = color;
+        HandlePlayerInput();
     }
 
     public void StartSinglePlayerGame()
@@ -82,12 +62,13 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         _gameUIHandler = UIGameHandler.Instance;
-        //SetAlpha(player1Gesture, 0);
-        //SetAlpha(player2Gesture, 0);
 
         // Set the player Scores
         _gameUIHandler.UpdatePlayerOneScore(0);
+        _player1Score = 0;
+
         _gameUIHandler.UpdatePlayerTwoScore(0);
+        _player2Score = 0;
 
         player1Chosen = false;
         player2Chosen = false;
@@ -111,111 +92,88 @@ public class GameManager : MonoBehaviour
         _gameUIHandler.ChangePlayerTwoName(player2Name);
     }
 
-    IEnumerator StartNewRound()
-    {
-        yield return new WaitForSeconds(2f); // Adjust the delay time as needed
-
-        SetAlpha(player1Gesture, 0);
-        SetAlpha(player2Gesture, 0);
-
-        player1Chosen = false;
-        player2Chosen = false;
-        winnerDetermined = false;
-    }
-
-    void HandleTwoPlayerInput()
+    void HandlePlayerInput()
     {
         if (Input.GetKeyDown(KeyCode.A) && player1Chosen==false)
         {
-            ChooseGesture(player1Gesture, gestures[0]);
+            OnPlayerOneInput?.Invoke(Hand.Gesture.Rock);
             player1Chosen = true;
         }
         else if (Input.GetKeyDown(KeyCode.S) && player1Chosen == false)
         {
-            ChooseGesture(player1Gesture, gestures[1]);
+            OnPlayerOneInput?.Invoke(Hand.Gesture.Paper);
             player1Chosen = true;
         }
         else if (Input.GetKeyDown(KeyCode.D) && player1Chosen == false)
         {
-            ChooseGesture(player1Gesture, gestures[2]);
+            OnPlayerOneInput?.Invoke(Hand.Gesture.Scissors);
             player1Chosen = true;
         }
 
         if (Input.GetKeyDown(KeyCode.J) && player2Chosen == false)
         {
-            ChooseGesture(player2Gesture, gestures[0]);
+            OnPlayerTwoInput?.Invoke(Hand.Gesture.Rock);
             player2Chosen = true;
         }
         else if (Input.GetKeyDown(KeyCode.K) && player2Chosen == false)
         {
-            ChooseGesture(player2Gesture, gestures[1]);
+            OnPlayerTwoInput?.Invoke(Hand.Gesture.Paper);
             player2Chosen = true;
         }
         else if (Input.GetKeyDown(KeyCode.L) && player2Chosen == false)
         {
-            ChooseGesture(player2Gesture, gestures[2]);
+            OnPlayerTwoInput?.Invoke(Hand.Gesture.Scissors);
             player2Chosen = true;
         }
     }
 
-    void HandleOnePlayerInput()
+    public void HandlePlayerOneReveal(Hand.Gesture gesture)
     {
-        if (Input.GetKeyDown(KeyCode.A) && player1Chosen == false)
+        player1Revealed = true;
+        player1Gesture = gesture;
+
+        if (player2Revealed)
         {
-            ChooseGesture(player1Gesture, gestures[0]);
-            player1Chosen = true;
-            ComputerTurn();
-        }
-        else if (Input.GetKeyDown(KeyCode.S) && player1Chosen == false)
-        {
-            ChooseGesture(player1Gesture, gestures[1]);
-            player1Chosen = true;
-            ComputerTurn();
-        }
-        else if (Input.GetKeyDown(KeyCode.D) && player1Chosen == false)
-        {
-            ChooseGesture(player1Gesture, gestures[2]);
-            player1Chosen = true;
-            ComputerTurn();
+            DetermineWinner();
         }
     }
 
-    void ComputerTurn()
+    public void HandlePlayerTwoReveal(Hand.Gesture gesture)
     {
-        // Randomly select a gesture for the computer
-        int randomIndex = Random.Range(0, gestures.Length);
-        ChooseGesture(player2Gesture, gestures[randomIndex]);
-        player2Chosen = true;
-    }
+        player2Revealed = true;
+        player2Gesture = gesture;
 
-    void ChooseGesture(GameObject playerGesture, Sprite gestureSprite)
-    {
-        playerGesture.GetComponent<Image>().sprite = gestureSprite;
-        SetAlpha(playerGesture, 1);
+        if (player1Revealed)
+        {
+            DetermineWinner();
+        }
     }
 
     void DetermineWinner()
     {
-        Sprite player1Sprite = player1Gesture.GetComponent<Image>().sprite;
-        Sprite player2Sprite = player2Gesture.GetComponent<Image>().sprite;
-
-        if (player1Sprite == player2Sprite)
+        if (player1Gesture == player2Gesture)
         {
             //tie
         }
-        else if ((player1Sprite == gestures[0] && player2Sprite == gestures[2]) ||
-                 (player1Sprite == gestures[1] && player2Sprite == gestures[0]) ||
-                 (player1Sprite == gestures[2] && player2Sprite == gestures[1]))
+        else if ((player1Gesture == Hand.Gesture.Rock && player2Gesture == Hand.Gesture.Scissors) ||
+                 (player1Gesture == Hand.Gesture.Paper && player2Gesture == Hand.Gesture.Rock) ||
+                 (player1Gesture == Hand.Gesture.Scissors && player2Gesture == Hand.Gesture.Paper))
         {
             //player 1 wins
-            _gameUIHandler.UpdatePlayerOneScore(_player1Score++);
+            _player1Score++;
+            _gameUIHandler.UpdatePlayerOneScore(_player1Score);
         }
         else
         {
             //player 2 wins
-            _gameUIHandler.UpdatePlayerTwoScore(_player2Score++);
+            _player2Score++;
+            _gameUIHandler.UpdatePlayerTwoScore(_player2Score);
         }
 
-        winnerDetermined = true;
+        player1Chosen = false;
+        player1Revealed = false;
+
+        player2Chosen = false;
+        player2Revealed = false;
     }
 }

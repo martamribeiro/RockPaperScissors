@@ -490,6 +490,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7260407531062367998, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
+      propertyPath: m_Name
+      value: PlayerTwoHand
+      objectReference: {fileID: 0}
     - target: {fileID: 7346070910400963422, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -507,8 +511,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 99e8422774df65e41a814104d8a15187, type: 3}
     - target: {fileID: 8314976276793568049, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
+      propertyPath: _player
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314976276793568049, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
       propertyPath: _revealMove
       value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314976276793568049, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
+      propertyPath: _handSprites.Array.data[0].handSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 99e8422774df65e41a814104d8a15187, type: 3}
+    - target: {fileID: 8314976276793568049, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
+      propertyPath: _handSprites.Array.data[1].handSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 44d15c14dc751b947b355ffafb01f796, type: 3}
+    - target: {fileID: 8314976276793568049, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
+      propertyPath: _handSprites.Array.data[2].handSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c95e9c714699c8f47ae326de23d0b9e6, type: 3}
+    - target: {fileID: 8314976276793568049, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
+      propertyPath: _handSprites.Array.data[1].handGesture
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314976276793568049, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
+      propertyPath: _handSprites.Array.data[2].handGesture
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8443360828246678979, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
       propertyPath: m_Pivot.x
@@ -2058,9 +2086,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294200dd56628ac49a5e25e008553d9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gestures: []
-  player1Gesture: {fileID: 0}
-  player2Gesture: {fileID: 0}
 --- !u!4 &1892843958
 Transform:
   m_ObjectHideFlags: 0
@@ -2649,6 +2674,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: ba2ba9b385ff1974a86bcd0a322815db, type: 3}
+    - target: {fileID: 7260407531062367998, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
+      propertyPath: m_Name
+      value: PlayerOneHand
+      objectReference: {fileID: 0}
     - target: {fileID: 7346070910400963422, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2672,6 +2701,26 @@ PrefabInstance:
     - target: {fileID: 8314976276793568049, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
       propertyPath: _revealRotation
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314976276793568049, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
+      propertyPath: _handSprites.Array.data[0].handSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ba2ba9b385ff1974a86bcd0a322815db, type: 3}
+    - target: {fileID: 8314976276793568049, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
+      propertyPath: _handSprites.Array.data[1].handSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 10292671e35ec204097bee23f559aa43, type: 3}
+    - target: {fileID: 8314976276793568049, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
+      propertyPath: _handSprites.Array.data[2].handSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d6d242d46f0bfb4daf05d350b7d95a1, type: 3}
+    - target: {fileID: 8314976276793568049, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
+      propertyPath: _handSprites.Array.data[1].handGesture
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314976276793568049, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
+      propertyPath: _handSprites.Array.data[2].handGesture
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8443360828246678979, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
       propertyPath: m_Pivot.y

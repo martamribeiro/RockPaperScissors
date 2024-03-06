@@ -715,10 +715,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handImage: {fileID: 2724957592243492418}
+  _handSprites:
+  - handShape: 0
+    handSprite: {fileID: 0}
+  - handShape: 1
+    handSprite: {fileID: 0}
+  - handShape: 2
+    handSprite: {fileID: 0}
+  _tmp: {fileID: 0}
+  _tmp2: {fileID: 0}
   _rotationAmount: 15
   _rotationTime: 0.5
   _moveAmount: 30
   _moveTime: 0.3
+  _revealTime: 0.2
+  _revealRotation: 90
+  _revealMove: 25
 --- !u!114 &2724957592243492418
 MonoBehaviour:
   m_ObjectHideFlags: 0

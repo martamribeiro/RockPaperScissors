@@ -32,6 +32,11 @@ public class UIBackground : MonoBehaviour
         _pulseCount = 0;
     }
 
+    private void OnDestroy()
+    {
+        MusicController.Instance.OnBeat -= Pulse;
+    }
+
     public void Pulse()
     {
         switch (_pulseCount)
