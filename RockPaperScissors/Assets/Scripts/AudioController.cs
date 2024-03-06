@@ -18,6 +18,10 @@ public class AudioController : MonoBehaviour
         if (Instance != null)
             Destroy(gameObject);
 
+        ChangeMasterVolume(1.0f);
+        ChangeMusicVolume(1.0f);
+        ChangeSFXVolume(1.0f);
+
         Instance = this;
     }
 
@@ -28,6 +32,12 @@ public class AudioController : MonoBehaviour
         _audioMixer.SetFloat(MASTER, volumeValue);
     }
 
+    public float GetMasterVolumeValue()
+    {
+        _audioMixer.GetFloat(MASTER, out float volumeValue);
+        return volumeValue;
+    }
+
     public void ChangeMusicVolume(float sliderValue)
     {
         float volumeValue = CalculateVolumeValue(sliderValue);
@@ -35,11 +45,23 @@ public class AudioController : MonoBehaviour
         _audioMixer.SetFloat(MUSIC, volumeValue);
     }
 
+    public float GetMusicVolumeValue()
+    {
+        _audioMixer.GetFloat(MUSIC, out float volumeValue);
+        return volumeValue;
+    }
+
     public void ChangeSFXVolume(float sliderValue)
     {
         float volumeValue = CalculateVolumeValue(sliderValue);
 
         _audioMixer.SetFloat(SFX, volumeValue);
+    }
+
+    public float GetSFXVolumeValue()
+    {
+        _audioMixer.GetFloat(SFX, out float volumeValue);
+        return volumeValue;
     }
 
     private float CalculateVolumeValue(float sliderValue)

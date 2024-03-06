@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIBackground : MonoBehaviour
 {
     private int _pulseCount;
+    private bool isConnected = false;
 
     private void Awake()
     {
@@ -13,22 +14,27 @@ public class UIBackground : MonoBehaviour
 
     private void Start()
     {
-        if (gameObject.activeSelf)
+        if (!isConnected && gameObject.activeSelf)
+        {
             MusicController.Instance.OnBeat += Pulse;
+            isConnected = true;
+        }
     }
 
     private void OnEnable()
     {
-        if (MusicController.Instance != null)
+        if (!isConnected && MusicController.Instance != null)
         {
             MusicController.Instance.OnBeat += Pulse;
             _pulseCount = 0;
+            isConnected = true;
         }
     }
 
     private void OnDisable()
     {
         MusicController.Instance.OnBeat -= Pulse;
+        isConnected = false;
         _pulseCount = 0;
     }
 

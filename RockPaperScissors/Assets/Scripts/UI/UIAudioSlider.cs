@@ -21,6 +21,9 @@ public class UIAudioSlider : MonoBehaviour
     private void Start()
     {
         _slider = GetComponent<Slider>();
+        
+        //UpdateSliderValue();
+        
         _slider.onValueChanged.AddListener (delegate { OnSliderValueChanged(); }) ;
     }
 
@@ -35,6 +38,18 @@ public class UIAudioSlider : MonoBehaviour
             case TargetAudio.SFX:
                 AudioController.Instance.ChangeSFXVolume(_slider.value); break;
         }
-        
+    }
+
+    public void UpdateSliderValue()
+    {
+        switch (_targetAudio)
+        {
+            case TargetAudio.Master:
+                _slider.value = AudioController.Instance.GetMasterVolumeValue(); break;
+            case TargetAudio.Music:
+                _slider.value = AudioController.Instance.GetMusicVolumeValue(); break;
+            case TargetAudio.SFX:
+                _slider.value = AudioController.Instance.GetSFXVolumeValue(); break;
+        }
     }
 }

@@ -2114,6 +2114,7 @@ GameObject:
   - component: {fileID: 1897367179}
   - component: {fileID: 1897367178}
   - component: {fileID: 1897367181}
+  - component: {fileID: 1897367182}
   m_Layer: 5
   m_Name: MusicButton
   m_TagString: Untagged
@@ -2251,6 +2252,21 @@ MonoBehaviour:
   _scaleAmount: 0.2
   _tweenTime: 0.2
   _tweenType: 16
+--- !u!114 &1897367182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897367176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5609baa3170aac48aa79f552b62e16e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonIcon: {fileID: 1897367179}
+  _mutedSprite: {fileID: 21300000, guid: 8fcc4c121465a644abb0fb1bb0a54386, type: 3}
+  _defaultSprite: {fileID: 21300000, guid: 05785736c9ec4044f9091abe13afc9f3, type: 3}
 --- !u!114 &1900792601 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8638169674629790128, guid: 072d790448dd3774d8b62e511e9bb052, type: 3}
