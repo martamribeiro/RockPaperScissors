@@ -16,7 +16,6 @@ public class UIGameHandler : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _player2Score;
     [SerializeField] private Transform[] _player2InputGuides;
 
-
     private void Awake()
     {
         if (Instance == null)

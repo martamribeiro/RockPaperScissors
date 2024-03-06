@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Hand : MonoBehaviour
 {
+    public Action OnMoveComplete;
+
     public enum Gesture
     {
         Rock,
@@ -18,6 +20,7 @@ public class Hand : MonoBehaviour
     {
         Player1,
         Player2,
+        None,
     }
 
     [SerializeField] Image _handImage;
@@ -105,10 +108,14 @@ public class Hand : MonoBehaviour
 
     private void TweenUp()
     {
-        if (_moveCount < 3) 
+        if (_moveCount < 3)
+        {
             LeanTween.rotateZ(gameObject, _baseRotation - _rotationAmount, _rotationTime).setEaseInOutSine().setOnComplete(TweenDown);
+        }
         else
+        {
             LeanTween.rotateZ(gameObject, _baseRotation - _rotationAmount, _rotationTime).setEaseInOutSine().setOnComplete(TweenReveal);
+        }
 
         LeanTween.moveLocalY(gameObject, _moveAmount, _moveTime).setEaseInOutSine();
     }
@@ -116,12 +123,19 @@ public class Hand : MonoBehaviour
     private void TweenDown()
     {
         LeanTween.rotateZ(gameObject, _baseRotation + _rotationAmount, _rotationTime).setEaseInOutSine().setOnComplete(TweenUp);
-        LeanTween.moveLocalY(gameObject, -(_moveAmount), _moveTime).setEaseInOutSine();
+        LeanTween.moveLocalY(gameObject, -(_moveAmount), _moveTime).setEaseInOutSine().setOnComplete(CompletedMovement);
         _moveCount++;
+    }
+
+    private void CompletedMovement()
+    {
+        OnMoveComplete?.Invoke();
     }
 
     private void TweenReveal()
     {
+        CompletedMovement();
+
         if (_chosenGesture == Gesture.None)
         {
             _chosenGesture = (Gesture)UnityEngine.Random.Range(0, 2);

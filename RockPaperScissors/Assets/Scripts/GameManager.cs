@@ -9,10 +9,11 @@ public class GameManager : MonoBehaviour
 {
     public Action<Hand.Gesture> OnPlayerOneInput;
     public Action<Hand.Gesture> OnPlayerTwoInput;
+    public Action<Hand.Player> OnPlayerWin;
 
     public static GameManager Instance { get; private set; }
 
-    bool isOnePlayerMode = false;
+    public bool isOnePlayerMode { get; private set; }
 
     bool player1Chosen = false;
     bool player1Revealed = false;
@@ -154,6 +155,7 @@ public class GameManager : MonoBehaviour
         if (player1Gesture == player2Gesture)
         {
             //tie
+            OnPlayerWin?.Invoke(Hand.Player.None);
         }
         else if ((player1Gesture == Hand.Gesture.Rock && player2Gesture == Hand.Gesture.Scissors) ||
                  (player1Gesture == Hand.Gesture.Paper && player2Gesture == Hand.Gesture.Rock) ||
@@ -162,12 +164,14 @@ public class GameManager : MonoBehaviour
             //player 1 wins
             _player1Score++;
             _gameUIHandler.UpdatePlayerOneScore(_player1Score);
+            OnPlayerWin?.Invoke(Hand.Player.Player1);
         }
         else
         {
             //player 2 wins
             _player2Score++;
             _gameUIHandler.UpdatePlayerTwoScore(_player2Score);
+            OnPlayerWin?.Invoke(Hand.Player.Player2);
         }
 
         player1Chosen = false;
